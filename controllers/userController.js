@@ -14,7 +14,7 @@ const userModel = require ('../models/User');
  */
 
 exports.create = (req, res) => {
-    console.logo('que tiene el body', req.body);
+    console.log('que tiene el body', req.body);
     const user = new userModel({
         name: req.body.name,
         lastname: req.body.lastname,
