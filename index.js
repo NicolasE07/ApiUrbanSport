@@ -12,6 +12,7 @@ conectToDB();
 
 require('./Routes/product')(app);
 require('./Routes/category')(app);// se esta cargando el archivo de rutas de las categorias y se envia una variable llamada app
+require('./Routes/user')(app);
 
 app.listen(3000, () => {
     console.log('conectado correctamente')
