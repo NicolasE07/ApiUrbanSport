@@ -3,7 +3,7 @@ const categoryModel = require('../models/Category'); // vamos a usar el modelo d
 /** 
  * C = Crear una categoria
  * R = leer una o mas categorias
- * U = Modificar una categoria
+ * U = Modificar una categoria 
  * D = Eliminar una categoria
 */
 
