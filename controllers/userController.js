@@ -36,3 +36,83 @@ exports.create = (req, res) => {
         }
     )
 }
+
+/**
+ * Metodo para listar todas la categorias
+ * @param {*} req => Todo los datos y la informacion que el metodo va a recibir   
+ * @param {*} res => Todo lo que nosotros le vamos a devolver al usuario
+ */
+ exports.findAll = (req, res) => {
+    userModel.find().then(
+        user => {
+            res.send(user);
+        }
+    ).catch(
+        error => {
+            return res.status(500).send({
+                message: "error en alistar"
+            });
+        }
+    )
+}
+
+/**
+ * Metodo para modificar una categoria
+ * @param {*} req => Todo los datos y la informacion que el metodo va a recibir   
+ * @param {*} res => Todo lo que nosotros le vamos a devolver al usuario
+ */
+exports.update = (req, res) => {
+    const user = {
+        name: req.body.name,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password
+    }
+    /**
+     * Tiene 3 parametros 
+     * 1. a quien quiero modificar por el ID
+     * 2. Por quien lo quiero modificar 
+     * 3. (opcional) indica que los datos que se van a devolver son los actualizados
+     */
+    userModel.findByIdAndUpdate(req.params.id, user, { new: true }).then(
+        data => {
+            res.send(data);
+        }
+    ).catch(
+        error => {
+            return res.status(500).send({
+                message: "error al modificar"
+            });
+
+        }
+
+    )
+
+}
+
+/**
+ * Metodo para eliminar una categoria
+ * @param {*} req => Todo los datos y la informacion que el metodo va a recibir   
+ * @param {*} res => Todo lo que nosotros le vamos a devolver al usuario
+ */
+exports.deleteOne = (req, res) => {
+    const user = {
+        name: req.body.name,
+        lastname: req.body.lastname,
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    userModel.findByIdAndRemove(req.params.id).then(
+        dataDelete =>{
+            res.send(dataDelete);
+        }
+    ).catch(
+        error=>{
+            return res.status(500).send({
+                message: "no se a podido eliminar"
+            });
+        }
+    )
+
+}

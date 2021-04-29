@@ -15,4 +15,7 @@ module.exports = (app)=>{
          */
 
     app.post('/user/create', userController.create);
+    app.put('/user/update/:id', userController.update);
+    app.get('/user/getAll', userController.findAll);
+    app.delete('/user/deleteOne/:id', userController.deleteOne)
 }
