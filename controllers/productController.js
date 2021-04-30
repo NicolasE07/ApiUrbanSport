@@ -40,18 +40,20 @@ exports.create = (req, res) => {
  * @param {*} req => Todo los datos y la informacion que el metodo va a recibir   
  * @param {*} res => Todo lo que nosotros le vamos a devolver al usuario
  */
- exports.findAll = (req, res) => {
-    productModel.find().then(
-        product => {
-            res.send(product);
-        }
-    ).catch(
-        error => {
-            return res.status(500).send({
-                message: "error en alistar"
-            });
-        }
-    )
+exports.findAll = (req, res) => {
+    productModel.find()
+        .populate('idCategory')
+        .then(
+            product => {
+                res.send(product);
+            }
+        ).catch(
+            error => {
+                return res.status(500).send({
+                    message: "error en alistar"
+                });
+            }
+        )
 }
 
 /**
@@ -102,11 +104,11 @@ exports.deleteOne = (req, res) => {
     }
 
     productModel.findByIdAndRemove(req.params.id).then(
-        dataDelete =>{
+        dataDelete => {
             res.send(dataDelete);
         }
     ).catch(
-        error=>{
+        error => {
             return res.status(500).send({
                 message: "no se a podido eliminar"
             });
