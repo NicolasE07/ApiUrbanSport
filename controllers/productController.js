@@ -24,7 +24,7 @@ exports.create = (req, res) => {
 
     product.save().then(
         data => {
-            res.send('se ah guardado correctamente: ', data);
+            res.send(data);
         }
     ).catch(
         error => {
@@ -43,6 +43,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
     productModel.find()
         .populate('idCategory')
+        .exec()
         .then(
             product => {
                 res.send(product);
