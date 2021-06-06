@@ -18,6 +18,7 @@ exports.create = (req, res) => {
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
+        fhoto: req.body.fhoto,
         idCategory: req.body.idCategory
 
     });
@@ -67,6 +68,7 @@ exports.update = (req, res) => {
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
+        fhoto: req.body.fhoto,
         idCategory: req.body.idCategory
     }
     /**
@@ -96,11 +98,12 @@ exports.update = (req, res) => {
  * @param {*} req => Todo los datos y la informacion que el metodo va a recibir   
  * @param {*} res => Todo lo que nosotros le vamos a devolver al usuario
  */
-exports.deleteOne = (req, res) => {
-    const product = {
+exports.deleteOne =(req, res) => {
+    const productModel = {
         name: req.body.name,
         price: req.body.price,
         description: req.body.description,
+        fhoto: req.body.fhoto,
         idCategory: req.body.idCategory
     }
 
@@ -115,5 +118,15 @@ exports.deleteOne = (req, res) => {
             });
         }
     )
+}
+exports.findBikeById = async (req, res) => {
+    console.log('req.params.id')
+    const bike = await productModel.findById(req.params.id)
+    res.json(bike)
 
 }
+    
+   
+
+    
+
