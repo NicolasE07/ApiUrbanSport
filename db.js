@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'); //vamos a utilizar la libreria de mongoose   
 
 const conectToDB = () => {
-    mongoose.connect(' mongodb://127.0.0.1:27017/TalentU', {
+    mongoose.connect(' mongodb://127.0.0.1:27017/UrbanSport', {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }, (error) => {

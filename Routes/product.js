@@ -16,5 +16,6 @@ module.exports = (app) => {
     app.post('/product/create', productController.create);
     app.put('/product/update/:id', productController.update);
     app.get('/product/getAll', productController.findAll);
+    app.get('/product/getBikeById/:id', productController.findBikeById );
     app.delete('/product/deleteOne/:id', productController.deleteOne);
 }
